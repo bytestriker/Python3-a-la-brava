@@ -1,21 +1,20 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-input_list = [2, ['24s1',0],{[1], 3}, [['¡¡'], 4],(3,'a')]
+input_list = [1, [2, True, 24, ('hí', None, 12.4)], 4, 5]
 
 def get_integers(items):
   result_list = []
+
   def find_ints(items):
     for item in items:
-      find_ints(items) if type(item) in [list, dict, tuple, set] else \
-      result_list.append(item) if type(item) is int else \
-      print(f"Item {item} was not included")
-      
+      find_ints(item) \
+			if type(item) in [list, tuple, set] else \
+			result_list.append(item) if type(item) is int else\
+			print(f"{item} Not added!")
+
   find_ints(items)
   return result_list
-  
 
-
-get_integers(input_list)
-      
-
-    
+s = get_integers(input_list)
+print(f"Integer elements: {s}")
